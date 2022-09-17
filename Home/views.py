@@ -41,6 +41,7 @@ def view_tv_detail(request, tv_id):
     return render(request, 'Home/tv_details.html',{
         "data" : data.json(),
         "recommendations": recommendations.json(),
+        "type" : "tv_details",
     })
     
 def view_movie_detail(request, movie_id):
@@ -49,4 +50,5 @@ def view_movie_detail(request, movie_id):
     return render(request, 'Home/movie_details.html',{
         "data" : data.json(),
         "recommendations" : recommendations.json(),
+        "type" : "movie_details",
     })
