@@ -1,0 +1,26 @@
+{% extends "Home/base.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+{% block main %}    
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-movie" role="tab" aria-controls="nav-movie" aria-selected="true">Movie</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="/index_tv" role="tab" aria-controls="nav-tv" aria-selected="false">TV Shows</a>
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact Me</a>
+        </div>
+    </nav>
+    <form action= "/search/" method = "get" class="row g-3 m-1">
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-movie" role="tabpanel" aria-labelledby="nav-movie-tab">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search Movie" aria-label="Search Movie" aria-describedby="basic-addon2" name = "q-movie">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="submit">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

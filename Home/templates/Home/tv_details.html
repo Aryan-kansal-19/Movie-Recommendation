@@ -1,0 +1,54 @@
+{% extends "Home/base.html" %}
+{% block title%}
+    Results
+{% endblock %}
+
+{% block main%}
+    <h1>{{ data.name }}</h1>
+    <img src= "https://image.tmdb.org/t/p/w200/{{ data.poster_path }}" alt = "...">
+    <h2>Networks</h2>
+    {% for n in data.networks %}
+        <h3>{{ n.name }}</h3>
+        <img src= "https://image.tmdb.org/t/p/w200/{{ n.logo_path }}" alt = "...">    
+    {% endfor %}
+    <hr>
+    <h2>Genres</h2>
+    <ul>
+        {% for g in data.genres %}
+            <li>{{ g.name }}</li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <h2>Languages</h2>
+    <ul>
+        {% for l in data.languages %}
+            <li>{{ l }}</li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <h2>Last Episode as of Today</h2>
+    <p>
+        <strong>Air Date: </strong>{{ data.last_episode_to_air.air_date}}<br>
+        <strong>Episode Number: </strong>{{ data.last_episode_to_air.episode_number}}<br>
+        <strong>Name: </strong>{{ data.last_episode_to_air.name}}<br>
+        <strong>Overview: </strong>{{ data.last_episode_to_air.Overview}}<br>
+    </p>
+    <hr>
+    <h2>Recommendations</h2>
+        <div class = "row">
+        {% for n in recommendations.results %}
+            <div class="card my-2 mx-auto" style = "width: 18rem;">
+                <img src="https://image.tmdb.org/t/p/w200{{ n.poster_path }}" class="card-img-top mt-2" alt="...">
+                <div class="card-body">
+                    {% if not  n.name %}
+                        <h5 class = "card-title">{{ n.title }}</h5>
+                    {% else %}
+                        <h5 class="card-title">{{ n.name }}</h5>
+                    {% endif %}
+                <p class="card-text">{{ n.overview }}</p>
+                <a href = "/{{ type }}/{{ n.id }}/" class = "btn btn-primary">View Details</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
